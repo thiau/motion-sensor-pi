@@ -18,8 +18,8 @@ parser.add_argument('--watson', action='store_true', help="Sends outputs of the 
 parser.set_defaults(watson=False)
 
 args = parser.parse_args()
+pin = int(args.pin) if args.pin else int(os.getenv("SENSOR_PIN"))
 
-pin = int(args.pin) or int(os.getenv("SENSOR_PIN"))
 enable_watson = args.watson or os.getenv(
     'ENABLE_WATSON_IOT_PLATFORM', 'False') == 'True'
 
